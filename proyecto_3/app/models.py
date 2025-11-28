@@ -1,8 +1,7 @@
-from datetime import datetime
 from django.db import models
 from datetime import datetime
 
-# Create your models here.
+# MODELOS QUE YA EXISTEN EN MAIN
 
 class Administrador(models.Model):
     nombre = models.CharField(max_length=150, verbose_name="Nombre")
@@ -27,7 +26,7 @@ class Cliente(models.Model):
     fechaCasastro = models.DateField(default=datetime.now, verbose_name="Fecha de Registro")
     
     def __str__(self):
-        return self.id
+        return str(self.id)
     
     class Meta:
         verbose_name = "cliente"
@@ -39,7 +38,7 @@ class Marca(models.Model):
     nombreMarca = models.CharField(max_length=100, verbose_name="Nombre Marca")
     
     def __str__(self):
-        return self.id
+        return str(self.id)
     
     class Meta:
         verbose_name = "marca"
@@ -61,16 +60,33 @@ class Proveedor(models.Model):
         verbose_name = "proveedor"
         verbose_name_plural = "proveedores"
         db_table = "proveedor"
+
+
+# TU NUEVO MODELO (PEDIDOS)
+
+class Pedidos(models.Model):
+    id_administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    fecha_pedido = models.DateField()
+    estado_pedido = models.CharField(max_length=150)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"Pedido {self.id} - {self.estado_pedido} - total: {self.total}"
+
+    class Meta:
+        verbose_name = "Pedido"
+        verbose_name_plural = "Pedidos"
+        ordering = ['-fecha_pedido']
+
+
 class compra(models.Model):
-    Administrador =models.ForeignKey(Administrador, on_delete=models.CASCADE)
-    Proveedor =models.ForeignKey(Proveedor, on_delete=models.CASCADE)
-    Producto=models.ForeignKey(Producto, on_delete=models.CASCADE)
-    fecha_compra=models.DateField(default=datetime.now)
-    totalcompra=models.FloatField()
-    estado=models.BooleanField(default=True)
+    Administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+    Proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
+    Producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    fecha_compra = models.DateField(default=datetime.now)
+    totalcompra = models.FloatField()
+    estado = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.id
-
-    
-    
+        return str(self.id)
