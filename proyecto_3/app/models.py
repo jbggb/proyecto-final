@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from datetime import datetime
 
@@ -60,3 +61,16 @@ class Proveedor(models.Model):
         verbose_name = "proveedor"
         verbose_name_plural = "proveedores"
         db_table = "proveedor"
+class compra(models.Model):
+    Administrador =models.ForeignKey(Administrador, on_delete=models.CASCADE)
+    Proveedor =models.ForeignKey(Proveedor, on_delete=models.CASCADE)
+    Producto=models.ForeignKey(Producto, on_delete=models.CASCADE)
+    fecha_compra=models.DateField(default=datetime.now)
+    totalcompra=models.FloatField()
+    estado=models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.id
+
+    
+    
