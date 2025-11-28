@@ -90,3 +90,35 @@ class compra(models.Model):
     
     def __str__(self):
         return str(self.id)
+
+class TipoProductos(models.Model):
+    nombre_tipo = models.CharField(
+        max_length=100,
+        verbose_name="Nombre Tipo Producto"
+    )
+    descripcion = models.TextField(
+        verbose_name="Descripción Tipo Producto"
+    )
+
+    def __str__(self):
+        return self.nombre_tipo
+    
+    class Meta:
+        verbose_name = "Tipo Producto"
+        verbose_name_plural = "Tipos de Productos"
+        db_table = "tipo_productos"
+        
+        def  __str__(self):
+            return str(self.id)
+
+class unidad_medida(models.Model):
+    nombre_unidad = models.CharField(max_length=100, verbose_name="Nombre Unidad de Medida")
+    abreviatura = models.CharField(max_length=10, verbose_name="Abreviatura")
+    
+    def __str__(self):
+        return str(self.id)
+    
+    class Meta:
+        verbose_name = "unidad de medida"
+        verbose_name_plural = "unidades de medida"
+        db_table = "unidad_medida"
