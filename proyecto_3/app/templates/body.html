@@ -1,0 +1,73 @@
+{% load static %}
+
+<main class="container mt-4">
+
+    <h1 class="mb-4">Panel de Gestión del Inventario</h1>
+
+    <!-- PRODUCTOS -->
+    <section class="mb-5">
+        <h3>Productos</h3>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Marca</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto ejemplo</td>
+                    <td>$10.000</td>
+                    <td>50</td>
+                    <td>Marca Ejemplo</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- CLIENTES -->
+    <section class="mb-5">
+        <h3>Clientes</h3>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juan Perez</td>
+                    <td>juan@mail.com</td>
+                    <td>3000000000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- VENTAS -->
+    <section class="mb-5">
+        <h3>Ventas</h3>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-01-01</td>
+                    <td>$80.000</td>
+                    <td>Juan Perez</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+{% endblock %}
